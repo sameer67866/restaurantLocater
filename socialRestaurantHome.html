@@ -5,6 +5,7 @@
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
         <title>Social Restaurant Web App</title>
         <link rel = "stylesheet" href="socialRestaurantHome.css">
+        <script type="module" src="./socialRestaurant.js"></script>
         <ul class="btnGroup">
             <li class="friendsBtn"><a href="friends.html">Friends</a></li>
             <li><a href="restaurants.html">Restaurants</a></li>
@@ -12,6 +13,13 @@
             <li style="float:right"><a href="signUp.html">Sign Up</a></li>
         </ul>
     </head>
-    <body>
+    <body onload = initMap()>
+        <div id="map"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer>
+        </script>
         <h1 class="mainHeader">Welcome to Social Restaurants!</h1>
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer>
+        </script> -->
     </body>

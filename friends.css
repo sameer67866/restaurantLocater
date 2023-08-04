@@ -1,5 +1,5 @@
 body {
-    background-image: url(friendsBG.jpeg);
+    background-image: url(friendsImg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -59,6 +59,6 @@ ul {
   .mainHeader {
     margin-top: 4vw;
     text-align: center;
-    color: #e4a700;
+    color: white;
     font-style: italic;
   }
