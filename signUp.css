@@ -1,0 +1,64 @@
+body {
+    background-image: url(friendsBG.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #023e8a;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #a47e1b;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+
+  ul {
+    position: fixed;
+    top: 0;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0%;
+  }
+
+  .btnGroup {
+    font-size: 20px;
+  }
+
+  .loginBtn {
+    margin-right: 5vw;
+  }
+
+  .homeBtn {
+    margin-left: 5vw;
+  }
+
+  .mainHeader {
+    margin-top: 4vw;
+    text-align: center;
+    color: #e4a700;
+    font-style: italic;
+  }
