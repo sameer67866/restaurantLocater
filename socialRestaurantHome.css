@@ -1,15 +1,15 @@
 body {
-    background-image: url(socialRestBG.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url(socialRestBG.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
-    overflow: hidden;
-    background-color: #023e8a;
-  }
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  background-color: #023e8a;
+}
   
   li {
     float: left;
@@ -22,8 +22,7 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  /* Change the link color to #111 (black) on hover */
+
   li a:hover {
     background-color: #a47e1b;
   }
@@ -49,15 +48,15 @@ ul {
   }
 
   .loginBtn {
-    margin-right: 5vw;
+    margin-right: 5%;
   }
 
   .friendsBtn {
-    margin-left: 5vw;
+    margin-left: 5%;
   }
 
   .mainHeader {
-    margin-top: 4vw;
+    margin-top: -47%;
     text-align: center;
     color: #c9a227;
     font-style: italic;
@@ -67,7 +66,6 @@ ul {
  * that contains the map. 
  */
 #map {
-  
   height: 100%;
 }
 
