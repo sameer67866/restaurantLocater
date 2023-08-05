@@ -51,5 +51,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   );
   infoWindow.open(map);
 }
-
 // window.initMap = initMap;
