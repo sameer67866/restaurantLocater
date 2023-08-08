@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
@@ -13,11 +13,71 @@
             <li style="float:right"><a href="signUp.html">Sign Up</a></li>
         </ul>
     </head>
-    <body onload = initMap()>
-        <div id="map"></div>
+    <body onload="getLocation()">
+        
         <h1 class="mainHeader">Welcome to Social Restaurants!</h1>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-        defer>
+    
+        
+        <script>
+        var x = document.getElementById("demo");
+        
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude;
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude;
+        }
         </script>
+        
+           
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="socialRestaurantHome.css">
+    <script type="module" src="./socialRestaurant.js"></script>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body onload="getLocation()">
+    <ul class="btnGroup">
+        <li class="friendsBtn"><a href="friends.html">Friends</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li style="float:right" class="loginBtn"><a href="login.html">Login</a></li>
+        <li style="float:right"><a href="signUp.html">Sign Up</a></li>
+    </ul>
+
+    <h1 class="mainHeader">Welcome to Social Restaurants!</h1>
+    <div id="locationInfo"></div> <!-- Add a div to display the location info -->
+    <script>
+        var locationInfo = document.getElementById("locationInfo"); // Get the div element
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                locationInfo.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            var latitude = position.coords.latitude; // Store latitude in a variable
+            var longitude = position.coords.longitude; // Store longitude in a variable
+            window.latitude = latitude;
+            window.longitude = longitude;
+        }
+    </script>
+</body>
 </html>
