@@ -13,126 +13,127 @@ ul {
   overflow: hidden;
   background-color: #023e8a;
 }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
 
-  li a:hover {
-    background-color: #a47e1b;
-  }
+li {
+  float: left;
+}
 
-  .active {
-    background-color: #04AA6D;
-  }
-  
-  li:last-child {
-    border-right: none;
-  }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-  ul {
-    position: fixed;
-    top: 0;
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 0%;
-  }
+li a:hover {
+  background-color: #a47e1b;
+}
 
-  .btnGroup {
-    font-size: 20px;
-  }
+.active {
+  background-color: #04AA6D;
+}
 
-  .loginBtn {
-    margin-right: 5%;
-  }
+li:last-child {
+  border-right: none;
+}
 
-  .homeBtn {
-    margin-left: 5%;
-  }
+ul {
+  position: fixed;
+  top: 0;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 0%;
+}
 
-  .mainHeader {
-    margin-top: 4%;
-    text-align: center;
-    color: #e4a700;
-  }
+.btnGroup {
+  font-size: 20px;
+}
 
-  html, body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    font-family: 'Numans', sans-serif;
-  }
-    
-    .container {
-      height: 100%;
-      align-content: center;
-    }
-    
-    .card {
-      height: 45%;
-      margin-top: 5%;
-      margin-bottom: auto;
-      width: 35%;
-      background-color: rgba(0,0,0,0.5) !important;
-    }
-    
-    .card-header h3 {
-      color: white;
-      text-align: center;
-    }
-    
-    .input-group-prepend span {
-      width: 50px;
-      background-color: #FFC312;
-      color: black;
-      border:0 !important;
-    }
-    
-    input:focus {
-      outline: 0 0 0 0  !important;
-      box-shadow: 0 0 0 0 !important;
-    }
-    
-    .remember {
-      color: white;
-    }
-    
-    .remember input {
-      width: 20px;
-      height: 20px;
-      margin-left: 15px;
-      margin-right: 5px;
-    }
-    
-    .login_btn {
-      color: black;
-      background-color: #FFC312;
-      width: 25%;
-      margin-left: 37.5%;
-      margin-top: 7%;
-    }
-    
-    .login_btn:hover {
-      color: white;
-      background-color: black;
-    }
-    
-    .links {
-      color: white;
-    }
-    
-    .links a {
-      margin-left: 4px;
-    }
+.loginBtn {
+  margin-right: 5%;
+}
+
+.homeBtn {
+  margin-left: 5%;
+}
+
+.mainHeader {
+  margin-top: 4%;
+  text-align: center;
+  color: #e4a700;
+}
+
+html,
+body {
+  background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.card {
+  height: 45%;
+  margin-top: 5%;
+  margin-bottom: auto;
+  width: 35%;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-header h3 {
+  color: white;
+  text-align: center;
+}
+
+.input-group-prepend span {
+  width: 50px;
+  background-color: #FFC312;
+  color: black;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.login_btn {
+  color: black;
+  background-color: #FFC312;
+  width: 25%;
+  margin-left: 37.5%;
+  margin-top: 7%;
+}
+
+.login_btn:hover {
+  color: white;
+  background-color: black;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
 
 .card-footer {
   margin-top: -7%;

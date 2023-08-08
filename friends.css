@@ -10,54 +10,54 @@ ul {
   overflow: hidden;
   background-color: #023e8a;
 }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #a47e1b;
-  }
 
-  .active {
-    background-color: #04AA6D;
-  }
-  
-  li:last-child {
-    border-right: none;
-  }
+li {
+  float: left;
+}
 
-  ul {
-    position: fixed;
-    top: 0;
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 0%;
-  }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-  .btnGroup {
-    font-size: 20px;
-  }
+li a:hover {
+  background-color: #a47e1b;
+}
 
-  .loginBtn {
-    margin-right: 5%;
-  }
+.active {
+  background-color: #04AA6D;
+}
 
-  .homeBtn {
-    margin-left: 5%;
-  }
+li:last-child {
+  border-right: none;
+}
 
-  .mainHeader {
-    margin-top: 4%;
-    text-align: center;
-    color: white;
-    font-style: italic;
-  }
+ul {
+  position: fixed;
+  top: 0;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 0%;
+}
+
+.btnGroup {
+  font-size: 20px;
+}
+
+.loginBtn {
+  margin-right: 5%;
+}
+
+.homeBtn {
+  margin-left: 5%;
+}
+
+.mainHeader {
+  margin-top: 4%;
+  text-align: center;
+  color: white;
+  font-style: italic;
+}
