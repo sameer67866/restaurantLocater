@@ -1,13 +1,19 @@
 let markers = [];
 let nextPageToken = null;
+let infoWindow;
+
 async function initMap() {
 	const { Map } = await google.maps.importLibrary("maps");
-	map = new Map(document.getElementById("map"), {
+	const map = new Map(document.getElementById("map"), {
 		center: { lat: latitude, lng: longitude },
 		zoom: 11.56,
 	});
 
-	service = new google.maps.places.PlacesService(map);
+	infoWindow = document.createElement("div");
+	infoWindow.id = "info-window";
+	document.body.appendChild(infoWindow);
+
+	const service = new google.maps.places.PlacesService(map);
 	const request = {
 		location: new google.maps.LatLng(latitude, longitude),
 		radius: 2000,
@@ -43,6 +49,68 @@ async function initMap() {
 				scaledSize: new google.maps.Size(40, 40),
 			},
 		});
+
 		markers.push(marker);
+
+		marker.addListener('click', () => {
+			service.getDetails({
+				placeId: place.place_id,
+				fields: ['name', 'formatted_address', 'rating']
+			}, (placeDetails, status) => {
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+					updateInfoWindow(placeDetails);
+				}
+			});
+		});
+	}
+
+	function updateInfoWindow(placeDetails) {
+		infoWindow.innerHTML = `
+            <div>
+                <strong>${placeDetails.name}</strong><br>
+                Address: ${placeDetails.formatted_address}<br>
+				Rating: ${placeDetails.rating}/5<br>
+				<div id = "viewBtnContainer">
+					<a id = "viewBtn" 
+					href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeDetails.formatted_address)}" 
+					target="_blank">View on Google Maps</a>
+				</div>
+				<div id = "hereBtnContainer">
+					<button id = "hereBtn" onclick="handleGoingHere()">I am going here</button>
+				</div>
+            </div>
+        `;
+
+		const mapWidth = map.getDiv().offsetWidth;
+		const mapHeight = map.getDiv().offsetHeight;
+		const infoWindowWidth = infoWindow.offsetWidth;
+		const infoWindowHeight = infoWindow.offsetHeight;
+
+		infoWindow.style.position = "absolute";
+		infoWindow.style.top = `${(mapHeight - infoWindowHeight) / 2}px`;
+		infoWindow.style.left = `${mapWidth + 100}px`;
+		infoWindow.style.backgroundColor = "#a47e1b";
+		infoWindow.style.padding = "10px";
+		infoWindow.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.1)";
+		infoWindow.style.zIndex = 9999;
+		// infoWindow.style.width = "30%";
+		// infoWindow.style.height = "30%";
+
+		const viewButton = document.getElementById("viewBtnContainer");
+		viewButton.style.marginTop = "2%";
+
+		const goingHereButton = document.getElementById("hereBtnContainer");
+		goingHereButton.style.border = "none";
+		goingHereButton.style.cursor = "pointer";
+		goingHereButton.style.marginTop = "5%";
+		goingHereButton.style.marginLeft = "35%";
+
+		const goingHereBtn = document.getElementById("hereBtn");
+		goingHereBtn.style.width = "40%";
+		goingHereBtn.style.height = "40%";
+		goingHereBtn.style.fontSize = "16px";
+		goingHereBtn.style.alignContent = "center";
+		goingHereBtn.style.backgroundColor = "green";
+		goingHereBtn.style.color = "white";
 	}
 }
