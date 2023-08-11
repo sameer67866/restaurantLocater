@@ -54,71 +54,65 @@
 
 // });   
  
- // Import the functions you need from the SDKs you need
-   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-app.js";
-   import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-database.js";
-   import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-auth.js";
-   // TODO: Add SDKs for Firebase products that you want to use
-   // https://firebase.google.com/docs/web/setup#available-libraries
+//  // Import the functions you need from the SDKs you need
+//    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-app.js";
+//    import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-database.js";
+//    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-auth.js";
+//    // TODO: Add SDKs for Firebase products that you want to use
+//    // https://firebase.google.com/docs/web/setup#available-libraries
  
-   // Your web app's Firebase configuration
-   const firebaseConfig = {
-	 apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
-	 authDomain: "auth-3d904.firebaseapp.com",
-	 databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
-	 projectId: "auth-3d904",
-	 storageBucket: "auth-3d904.appspot.com",
-	 messagingSenderId: "923624233664",
-	 appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
-   };
+//    // Your web app's Firebase configuration
+//    const firebaseConfig = {
+// 	 apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
+// 	 authDomain: "auth-3d904.firebaseapp.com",
+// 	 databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
+// 	 projectId: "auth-3d904",
+// 	 storageBucket: "auth-3d904.appspot.com",
+// 	 messagingSenderId: "923624233664",
+// 	 appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
+//    };
  
-   // Initialize Firebase
-   const app = initializeApp(firebaseConfig);
-   const database = getDatabase(app);
-   const auth = getAuth();
+//    // Initialize Firebase
+//    const app = initializeApp(firebaseConfig);
+//    const database = getDatabase(app);
+//    const auth = getAuth();
    
-   function handleOnSubmit() {
+//    function handleOnSubmit() {
 
    
 
-   var firstName = document.getElementById("firstName").value;
-   var lastName = document.getElementById("lastName").value;
-   var email = document.getElementById("email").value;
-   var userName = document.getElementById("userName").value;
-   var password = document.getElementById("password").value;
+//    var firstName = document.getElementById("firstName").value;
+//    var lastName = document.getElementById("lastName").value;
+//    var email = document.getElementById("email").value;
+//    var userName = document.getElementById("userName").value;
+//    var password = document.getElementById("password").value;
 
-   createUserWithEmailAndPassword(auth, email, password)
-   .then((userCredential) => {
+//    createUserWithEmailAndPassword(auth, email, password)
+//    .then((userCredential) => {
 
-	const uid = userCredential.user.uid;
-    const userData = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      username: username
-    };
+// 	const uid = userCredential.user.uid;
+//     const userData = {
+//       firstName: firstName,
+//       lastName: lastName,
+//       email: email,
+//       username: username
+//     };
 
-    // Save to database
-    const dbRef = ref(database, 'users/' + uid);
-    set(dbRef, userData);
-   // Signed in 
-   //const user = userCredential.user;
-   alert("user created!")
-   // ...
- })
- .catch((error) => {
-   const errorCode = error.code;
-   const errorMessage = error.message;
-   alert(errorMessage);
-   // ..
- });
-
-
-
-}
-
-
-
+//     // Save to database
+//     const dbRef = ref(database, 'users/' + uid);
+//     set(dbRef, userData);
+//    // Signed in 
+//    //const user = userCredential.user;
+//    alert("user created!")
+//    // ...
+//  })
+//  .catch((error) => {
+//    const errorCode = error.code;
+//    const errorMessage = error.message;
+//    alert(errorMessage);
+//    // ..
+//  });
+// }
 
 // import { initializeApp } from "firebase/app";
 //         import { getAnalytics } from "firebase/analytics";
