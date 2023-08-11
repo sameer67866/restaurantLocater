@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-auth.js"></script>
+    <!-- Your Firebase configuration and initialization code -->
+    <script>
+        const firebaseConfig = {
+        apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
+	    authDomain: "auth-3d904.firebaseapp.com",
+	 databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
+	 projectId: "auth-3d904",
+	 storageBucket: "auth-3d904.appspot.com",
+	 messagingSenderId: "923624233664",
+	 appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
+        };
+        
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const auth = firebase.auth();
+        
+        function signUp() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Save additional user information to the database
+                    const user = userCredential.user;
+                    database.ref('users/' + user.uid).set({
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email
+                    });
+                    
+                    alert("User created successfully!");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Sign Up</h1>
+    <form>
+        <input type="text" id="firstName" placeholder="First Name"><br>
+        <input type="text" id="lastName" placeholder="Last Name"><br>
+        <input type="email" id="email" placeholder="Email"><br>
+        <input type="password" id="password" placeholder="Password"><br>
+        <button type="button" onclick="signUp()">Sign Up</button>
+    </form>
+</body>
+
+</html>

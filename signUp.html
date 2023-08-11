@@ -1,9 +1,10 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0">
@@ -23,7 +24,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
+
 <body>
+    <!-- <script src="socialRestaurant.js"></script> -->
     <h1 class="mainHeader">Please Sign Up!</h1>
     <div class="container">
         <div class="d-flex justify-content-center h-100">
@@ -34,27 +37,28 @@
                 <div class="card-body">
                     <form>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" style="background-color: #9ef01acd"
+                            <input type="text" class="form-control" id="firstName" style="background-color: #9ef01acd"
                                 placeholder="First Name">
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" style="background-color: #9ef01acd"
+                            <input type="text" class="form-control" id="lastName" style="background-color: #9ef01acd"
                                 placeholder="Last Name">
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" style="background-color: #9ef01acd"
+                            <input type="text" class="form-control" id="email" style="background-color: #9ef01acd"
                                 placeholder="Email">
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" style="background-color: #9ef01acd"
+                            <input type="text" class="form-control" id="userName" style="background-color: #9ef01acd"
                                 placeholder="Username">
                         </div>
                         <div class="input-group form-group">
-                            <input type="password" class="form-control" style="background-color: #9ef01acd"
-                                placeholder="Password">
+                            <input type="password" class="form-control" id="password"
+                                style="background-color: #9ef01acd" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Create Account" class="btn login_btn">
+                            <input type="submit" onsubmit="handleOnSubmit(); return false;" value="Create Account"
+                                class="btn login_btn">
                         </div>
                     </form>
                 </div>
@@ -62,4 +66,73 @@
         </div>
     </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.4.7/firebase-auth.js"></script>
+<script type = "module">
+
+    // Import the functions you need from the SDKs you need
+//    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-app.js";
+//    import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-database.js";
+//    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.4.7/firebase-auth.js";
+
+<!-- Replace "9.0.0" with the latest version -->
+
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+ 
+   // Your web app's Firebase configuration
+   const firebaseConfig = {
+	 apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
+	 authDomain: "auth-3d904.firebaseapp.com",
+	 databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
+	 projectId: "auth-3d904",
+	 storageBucket: "auth-3d904.appspot.com",
+	 messagingSenderId: "923624233664",
+	 appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
+   };
+ 
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+   
+   const database = getDatabase(app);
+   const auth = getAuth();
+   
+   function handleOnSubmit() {
+
+   console.log("test " +firebase.app())
+
+   var firstName = document.getElementById("firstName").value;
+   var lastName = document.getElementById("lastName").value;
+   var email = document.getElementById("email").value;
+   var userName = document.getElementById("userName").value;
+   var password = document.getElementById("password").value;
+
+   createUserWithEmailAndPassword(auth, email, password)
+   .then((userCredential) => {
+
+	
+
+    // Save to database
+    const dbRef = ref(database, 'users/' + uid);
+    set(dbRef, userData);
+   // Signed in 
+   //const user = userCredential.user;
+   alert("user created!")
+   // ...
+ })
+ .catch((error) => {
+   const errorCode = error.code;
+   const errorMessage = error.message;
+   alert(errorMessage);
+   // ..
+ });
+
+
+
+}
+
+
+</script>
+
 </html>
