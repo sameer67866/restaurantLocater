@@ -1,5 +1,3 @@
-
-
 // map function
 let markers = [];
 let nextPageToken = null;

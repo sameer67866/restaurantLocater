@@ -40,19 +40,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control"id="loginInput" placeholder="email/username">
+                            <input type="text" class="form-control" id="loginInput" placeholder="email/username">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control"id="passwordInput" placeholder="password">
+                            <input type="password" class="form-control" id="passwordInput" placeholder="password">
                         </div>
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember Me
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn login_btn" id="loginButton">
+                            <input type="button" value="Login" class="btn login_btn" id="loginButton">
                         </div>
                     </form>
                 </div>
@@ -64,12 +64,12 @@
             </div>
         </div>
     </div>
-    <!-- Firebase Configuration and Login Logic --> 
+    <!-- Firebase Configuration and Login Logic -->
     <script type="module">
-         // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
@@ -85,36 +85,57 @@
         const auth = getAuth();
         const database = getDatabase(app);
 
-         // Wait for the document to be fully loaded
-         document.addEventListener("DOMContentLoaded", () => {
-        // Login Button Click Event
-        document.getElementById("loginButton").addEventListener("click", () => {
-            const emailOrUsername = document.getElementById("loginInput").value;
-            const password = document.getElementById("passwordInput").value;
+        //Wait for the document to be fully loaded
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     // Login Button Click Event
+        //     document.getElementById("loginButton").addEventListener("click", () => {
+        //         const emailOrUsername = document.getElementById("loginInput").value;
+        //         const password = document.getElementById("passwordInput").value;
 
-        // Authenticate using Firebase Authentication
-    auth.signInWithEmailAndPassword(emailOrUsername, password)
-      //  .then((userCredential) => {
-        .then(function() {
-            var user = auth.currentUser
-            var database_ref = database.ref()
+        //         // Authenticate using Firebase Authentication
+        //         auth.signInWithEmailAndPassword(emailOrUsername, password)
+        //             //  .then((userCredential) => {
+        //             .then(function () {
+        //                 var user = auth.currentUser
+        //                 var database_ref = database.ref()
 
-            var user_data= {
-                lastLogin : Date.now()
-            }
-            database_ref.child('users/'+user.uid).update(user_data)
-            alert("User Logged In!!!!!!!!!!")
-        })
-        .catch(function(error){
-            var error_code = error.code
-            var error_message = error.message
-            console.error("Authentication Error:", error_code, error_message);
-            alert(error_message)
+        //                 var user_data = {
+        //                     lastLogin: Date.now()
+        //                 }
+        //                 database_ref.child('users/' + user.uid).update(user_data)
+        //                 alert("User Logged In!!!!!!!!!!")
+        //             })
+        //             .catch(function (error) {
+        //                 var error_code = error.code
+        //                 var error_message = error.message
+        //                 console.error("Authentication Error:", error_code, error_message);
+        //                 alert(error_message)
 
-        })
+        //             })
+        //     });
+        // });
 
 
-            
+        document.addEventListener("DOMContentLoaded", () => {
+            // Login Button Click Event
+            document.getElementById("loginButton").addEventListener("click", async () => {
+                const emailOrUsername = document.getElementById("loginInput").value;
+                const password = document.getElementById("passwordInput").value;
+
+                try {
+                    await signInWithEmailAndPassword(auth, emailOrUsername, password);
+                    alert("User Logged In!");
+                    // Redirect the user to restaurants.html
+                    window.location.href = "restaurants.html";
+                } catch (error) {
+                    var error_message = error.message;
+                    console.error("Authentication Error:", error.message);
+                    alert("Authentication Error: " + error_message);
+                }
+            });
+        });
+
+
 //             // User login successful
 //             const user = userCredential.user;
 //             console.log("User logged in:", user);
@@ -146,10 +167,6 @@
 //             const errorMessage = error.message;
 //             console.error("Error logging in:", errorCode, errorMessage);
 //             // You can show an error message to the user
-         });
-    });
-
-
     </script>
 </body>
 

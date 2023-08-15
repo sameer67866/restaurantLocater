@@ -9,11 +9,41 @@
         <li class="homeBtn"><a href="socialRestaurantHome.html">Home</a></li>
         <li><a href="friends.html">Friends</a></li>
         <li><a href="restaurants.html">Restaurants</a></li>
+        <li style="float:right" class="logoutBtn" id="logoutButton"><a>Logout</a></li>
         <li style="float:right" class="loginBtn"><a href="login.html">Login</a></li>
         <li style="float:right"><a href="signUp.html">Sign Up</a></li>
     </ul>
 </head>
 <body>
     <h1 class="mainHeader">Welcome to the Friends Section!</h1>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
+            authDomain: "auth-3d904.firebaseapp.com",
+            databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
+            projectId: "auth-3d904",
+            storageBucket: "auth-3d904.appspot.com",
+            messagingSenderId: "923624233664",
+            appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Logout Button Click Event
+            document.getElementById("logoutButton").addEventListener("click", async () => {
+                try {
+                    await signOut(auth);
+                    alert("User Logged Out!");
+                } catch (error) {
+                    console.error("Logout Error:", error.message);
+                    alert("Logout Error: " + error.message);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
