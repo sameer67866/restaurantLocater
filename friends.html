@@ -9,9 +9,11 @@
         <li class="homeBtn"><a href="socialRestaurantHome.html">Home</a></li>
         <li><a href="friends.html">Friends</a></li>
         <li><a href="restaurants.html">Restaurants</a></li>
+        <li style="text-align: right;" id="loginSignupContainer">
+            <a class ="signUpBtn" href="signUp.html" style="display: inline-block; margin-left: 700px">Sign Up</a>
+            <a class="loginBtn" href="login.html" style="display: inline-block; margin-left: 10px;">Login</a>
+        </li>                     
         <li style="float:right" class="logoutBtn" id="logoutButton"><a>Logout</a></li>
-        <li style="float:right" class="loginBtn"><a href="login.html">Login</a></li>
-        <li style="float:right"><a href="signUp.html">Sign Up</a></li>
     </ul>
 </head>
 <body>
@@ -32,6 +34,19 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
 
+        auth.onAuthStateChanged(user => {
+            const loginSignupContainer = document.getElementById("loginSignupContainer");
+            const logoutButton = document.getElementById("logoutButton");
+
+            if (user) {
+                loginSignupContainer.style.display = "none";
+                logoutButton.style.display = "block";
+            } else {
+                loginSignupContainer.style.display = "inline";
+                logoutButton.style.display = "none";
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             // Logout Button Click Event
             document.getElementById("logoutButton").addEventListener("click", async () => {
@@ -39,7 +54,7 @@
                     try {
                         await signOut(auth);
                         alert("User Logged Out!");
-                        //window.location.href = "socialRestaurantHome.html";
+                        window.location.href = "socialRestaurantHome.html";
                     } catch (error) {
                         console.error("Logout Error:", error.message);
                         alert("Logout Error: " + error.message);
