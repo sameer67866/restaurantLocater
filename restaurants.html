@@ -69,13 +69,17 @@
         document.addEventListener("DOMContentLoaded", () => {
             // Logout Button Click Event
             document.getElementById("logoutButton").addEventListener("click", async () => {
-                try {
-                    await signOut(auth);
-                    alert("User Logged Out!");
-                    //window.location.href = "socialRestaurantHome.html";
-                } catch (error) {
-                    console.error("Logout Error:", error.message);
-                    alert("Logout Error: " + error.message);
+                if (auth.currentUser != null) {
+                    try {
+                        await signOut(auth);
+                        alert("User Logged Out!");
+                        //window.location.href = "socialRestaurantHome.html";
+                    } catch (error) {
+                        console.error("Logout Error:", error.message);
+                        alert("Logout Error: " + error.message);
+                    }
+                } else {
+                    alert("You aren't logged in!");
                 }
             });
         });

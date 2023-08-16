@@ -1,3 +1,29 @@
+function handleGoingHere() {
+	// Check if the user is logged in (you need to implement this logic)
+	if (auth.currentUser != null) {
+		// Get the restaurant's name from placeDetails
+		const restaurantName = placeDetails.name;
+
+		// Add the restaurant's name to the user's list of restaurants in the database
+		const userId = getCurrentUserId(); // Replace this with your logic to get the user's ID
+		if (userId) {
+			const dbRef = firebase.database().ref(`users/${userId}/restaurants`);
+			dbRef.push(restaurantName)
+				.then(() => {
+					console.log(`Added ${restaurantName} to the user's list of restaurants.`);
+				})
+				.catch((error) => {
+					console.error("Error adding restaurant:", error);
+				});
+		} else {
+			console.error("User ID not available.");
+		}
+	} else {
+		console.log("User is not logged in.");
+		// Implement logic to show a login prompt or redirect to a login page
+	}
+}
+
 // map function
 let markers = [];
 let nextPageToken = null;
@@ -76,6 +102,22 @@ async function initMap() {
 					href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeDetails.formatted_address)}" 
 					target="_blank">View on Google Maps</a>
 				</div>
+				<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
+            authDomain: "auth-3d904.firebaseapp.com",
+            databaseURL: "https://auth-3d904-default-rtdb.firebaseio.com",
+            projectId: "auth-3d904",
+            storageBucket: "auth-3d904.appspot.com",
+            messagingSenderId: "923624233664",
+            appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+    </script>
 				<div id = "hereBtnContainer">
 					<button id = "hereBtn" onclick="handleGoingHere()">I am going here</button>
 				</div>

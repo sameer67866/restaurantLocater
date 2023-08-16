@@ -2,10 +2,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-width, initial-scale = 1.0">
@@ -25,7 +23,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
-
 <body>
     <h1 class="mainHeader">Please Login!</h1>
     <div class="container">
@@ -85,37 +82,6 @@
         const auth = getAuth();
         const database = getDatabase(app);
 
-        //Wait for the document to be fully loaded
-        // document.addEventListener("DOMContentLoaded", () => {
-        //     // Login Button Click Event
-        //     document.getElementById("loginButton").addEventListener("click", () => {
-        //         const emailOrUsername = document.getElementById("loginInput").value;
-        //         const password = document.getElementById("passwordInput").value;
-
-        //         // Authenticate using Firebase Authentication
-        //         auth.signInWithEmailAndPassword(emailOrUsername, password)
-        //             //  .then((userCredential) => {
-        //             .then(function () {
-        //                 var user = auth.currentUser
-        //                 var database_ref = database.ref()
-
-        //                 var user_data = {
-        //                     lastLogin: Date.now()
-        //                 }
-        //                 database_ref.child('users/' + user.uid).update(user_data)
-        //                 alert("User Logged In!!!!!!!!!!")
-        //             })
-        //             .catch(function (error) {
-        //                 var error_code = error.code
-        //                 var error_message = error.message
-        //                 console.error("Authentication Error:", error_code, error_message);
-        //                 alert(error_message)
-
-        //             })
-        //     });
-        // });
-
-
         document.addEventListener("DOMContentLoaded", () => {
             // Login Button Click Event
             document.getElementById("loginButton").addEventListener("click", async () => {
@@ -134,40 +100,6 @@
                 }
             });
         });
-
-
-//             // User login successful
-//             const user = userCredential.user;
-//             console.log("User logged in:", user);
-
-//             // Get additional user information if needed
-//             const uid = user.uid;
-
-//             // Assuming you have a 'users' collection in your database
-//             const userRef = ref(database, 'users/' + uid);
-
-//             // Fetch user data from the database
-//             get(userRef).then((snapshot) => {
-//                 if (snapshot.exists()) {
-//                     const userData = snapshot.val();
-//                     console.log("User data:", userData);
-
-//                     // Redirect after successful login
-//                     window.location.href = "google.com";
-//                 } else {
-//                     console.log("User data not found.");
-//                 }
-//             }).catch((error) => {
-//                 console.error("Error getting user data:", error);
-//             });
-//         })
-//         .catch((error) => {
-//             // An error occurred during login
-//             const errorCode = error.code;
-//             const errorMessage = error.message;
-//             console.error("Error logging in:", errorCode, errorMessage);
-//             // You can show an error message to the user
     </script>
 </body>
-
 </html>
