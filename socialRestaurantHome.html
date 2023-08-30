@@ -25,6 +25,7 @@
                 locationInfo.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
+
         function showPosition(position) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
@@ -35,6 +36,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
         import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
             authDomain: "auth-3d904.firebaseapp.com",
@@ -44,7 +46,6 @@
             messagingSenderId: "923624233664",
             appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
         };
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
 

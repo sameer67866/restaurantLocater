@@ -1,11 +1,9 @@
 function handleGoingHere() {
-	// Check if the user is logged in (you need to implement this logic)
+	// Check if the user is logged in
 	if (auth.currentUser != null) {
-		// Get the restaurant's name from placeDetails
 		const restaurantName = placeDetails.name;
-
 		// Add the restaurant's name to the user's list of restaurants in the database
-		const userId = getCurrentUserId(); // Replace this with your logic to get the user's ID
+		const userId = getCurrentUserId();
 		if (userId) {
 			const dbRef = firebase.database().ref(`users/${userId}/restaurants`);
 			dbRef.push(restaurantName)
@@ -20,7 +18,6 @@ function handleGoingHere() {
 		}
 	} else {
 		console.log("User is not logged in.");
-		// Implement logic to show a login prompt or redirect to a login page
 	}
 }
 
@@ -76,7 +73,6 @@ async function initMap() {
 				scaledSize: new google.maps.Size(40, 40),
 			},
 		});
-
 		markers.push(marker);
 
 		marker.addListener('click', () => {
@@ -136,8 +132,6 @@ async function initMap() {
 		infoWindow.style.padding = "10px";
 		infoWindow.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.1)";
 		infoWindow.style.zIndex = 9999;
-		// infoWindow.style.width = "30%";
-		// infoWindow.style.height = "30%";
 
 		const viewButton = document.getElementById("viewBtnContainer");
 		viewButton.style.marginTop = "2%";

@@ -60,14 +60,12 @@
             messagingSenderId: "923624233664",
             appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
         };
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
 
         auth.onAuthStateChanged(user => {
             const loginSignupContainer = document.getElementById("loginSignupContainer");
             const logoutButton = document.getElementById("logoutButton");
-
             if (user) {
                 loginSignupContainer.style.display = "none";
                 logoutButton.style.display = "block";
@@ -78,7 +76,6 @@
         });
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Logout Button Click Event
             document.getElementById("logoutButton").addEventListener("click", async () => {
                 try {
                     await signOut(auth);

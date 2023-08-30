@@ -16,7 +16,7 @@
 		<li style="float:right" class="loginBtn"><a href="login.html">Login</a></li>
 		<li style="float:right"><a href="signUp.html">Sign Up</a></li>
 	</ul>
-	<!--Bootsrap 4 CDN-->
+	<!--Bootstrap 4 CDN-->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<!--Fontawesome CDN-->
@@ -63,13 +63,11 @@
 	</div>
 </body>
 <script type="module">
-	// Import the functions you need from the SDKs you need
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 	import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 	import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 	import { getStorage } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
 
-	// Your web app's Firebase configuration
 	const firebaseConfig = {
 		apiKey: "AIzaSyDplXTrUHgAVMHyZXLUv4n9jA5YjZ6nmH8",
 		authDomain: "auth-3d904.firebaseapp.com",
@@ -80,7 +78,6 @@
 		appId: "1:923624233664:web:2e600adc4d6b1972c92b25"
 	};
 
-	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
 	const database = getDatabase(app);
 	const auth = getAuth();
@@ -93,7 +90,6 @@
 		const userName = document.getElementById("userName").value;
 		const password = document.getElementById("password").value;
 
-		// Validate input fields
 		if (validateField(firstName) == false) {
 			alert("First Name Cannot be Empty!");
 			return;
@@ -117,10 +113,9 @@
 
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				// User creation successful
 				const user = userCredential.user;
-				const uid = user.uid; // Capture the user ID
-				const userData = { // Define the user data object
+				const uid = user.uid;
+				const userData = { 
 					firstName: firstName,
 					lastName: lastName,
 					email: email,
@@ -140,7 +135,6 @@
 					});
 			})
 			.catch((error) => {
-				// An error occurred during user creation
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				console.error("Error creating user:", errorCode, errorMessage);
@@ -172,8 +166,8 @@
 	document.addEventListener("DOMContentLoaded", () => {
 		const createAccountButton = document.querySelector(".login_btn");
 		createAccountButton.addEventListener("click", (event) => {
-			event.preventDefault(); // Prevent the default form submission
-			handleOnSubmit(); // Call the handleOnSubmit function
+			event.preventDefault(); 
+			handleOnSubmit();
 		});
 	});
 </script>
